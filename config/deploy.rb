@@ -1,24 +1,27 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.16.0"
 
-set :recipient, "Ruby"
+# set :recipient, "Ruby"
 
-desc "This is a hello world task"
-task :hello do 
-    puts "hello #{fetch(:recipient)}"
-    on roles(:web) do
-        execute 'whoami'
-    end
-end
+# desc "This is a hello world task"
+# task :hello do 
+#     puts "hello #{fetch(:recipient)}"
+#     on roles(:web) do
+#         execute 'whoami'
+#     end
+# end
 
-task :goodBye do 
-    puts "Goodbye  #{fetch(:recipient)}"
-end
+# task :goodBye do 
+#     puts "Goodbye  #{fetch(:recipient)}"
+# end
 
-after :hello, :goodBye
-# set :application, "my_app _name"
-# set :repo_url, "git@example.com:me/my_repo.git"
+# after :hello, :goodBye
+# set :application, "something"
+set :repo_url, "https://github.com/Imsurajkr/store.git"
 
+set :branch, "Feature/something"
+
+set :deploy_to, "/home/suraj/store"
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
