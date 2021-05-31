@@ -1,14 +1,29 @@
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.11.2"
+lock "~> 3.16.0"
 
-set :application, "store"
-set :repo_url, ""
+
+set :application, "myapp"
+set :repo_url, "https://github.com/Imsurajkr/store.git"
+
+# Deploy to the user's home directory
+set :deploy_to, "/home/deploy/#{fetch :application}"
+
+append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', '.bundle', 'public/system', 'public/uploads'
+
+# Only keep the last 5 releases to save disk space
+set :keep_releases, 5
+
+# Optionally, you can symlink your database.yml and/or secrets.yml file from the shared directory during deploy
+# This is useful if you don't want to use ENV variables
+# append :linked_files, 'config/database.yml', 'config/secrets.yml'
+# set :application, "store"
+# set :repo_url, "https://github.com/Imsurajkr/store.git"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-# set :deploy_to, "/var/www/my_app_name"
+# set :deploy_to, "/home/suraj/store"
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
